@@ -18,6 +18,15 @@ if [ -n "$PELICAN_THEME_FOLDER" ]; then
     popd
 fi
 
+echo "List directory contents"
+ls
+
+if [ -d $PELICAN_THEME_FOLDER ]; then
+    echo "Theme folder ${PELICAN_THEME_FOLDER} exists."
+else
+    echo "Theme folder ${PELICAN_THEME_FOLDER} does not exist (or is not a directory)."
+fi
+
 echo 'Building site 👷 '
 pelican ${PELICAN_CONTENT_FOLDER:=content} -o output -s ${PELICAN_CONFIG_FILE:=pelicanconf.py}
 
